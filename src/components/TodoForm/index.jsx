@@ -11,6 +11,7 @@ class TodoForm extends React.Component {
         let newItemValue = input.value;
 
         if(newItemValue) {
+            this.props.addItem({newItemValue});
             input.value = '';
         }
     }
