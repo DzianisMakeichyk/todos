@@ -1,19 +1,18 @@
 import React from 'react';
+import TodoListItem from '../TodoListItem'
 
-class TodoListItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+class TodoList extends React.Component {
     render () {
+        console.log(this.props)
+        let items = this.props.items.map((item, index) => {
+            return (
+                <TodoListItem key={index} item={item} index={index}/>
+            );
+        });
         return (
-            <li className="list-group-item ">
-                <div>
-                    <span className="check-me" onClick={this.onClickDone}></span>
-                    <button type="button" className="close" onClick={this.onClickClose}>&times;</button>
-                </div>
-            </li>
+            <ul className="list-group"> {items} </ul>
         );
     }
 }
 
-export default TodoListItem;
+export default TodoList;

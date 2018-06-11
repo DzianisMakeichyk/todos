@@ -5,14 +5,16 @@ import TodoList from './components/TodoList'
 
 class App extends Component {
   state = {
-    todoItems: []
+    todoItems: [{index: 1, value: "hello", done: false}]
   };
 
   render() {
     return (
       <div className="App">
         <TodoHeader />
-        <TodoList />
+
+        <TodoList items={this.state.todoItems}/>
+
         <TodoForm />
       </div>
     );
