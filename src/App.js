@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-        todoItems: [{index: 1, value: "hello", done: false}]
+        todoItems: [{index: 0, value: "hello", done: false}]
     };
 
     this.addItem = this.addItem.bind(this);
@@ -26,7 +26,7 @@ class App extends Component {
     });
 
     this.setState({
-      todoItems: todoItems,
+      todoItems,
     });
   }
 
@@ -34,26 +34,17 @@ class App extends Component {
     this.setState({
       todoItems: this.state.todoItems.filter(todoItem => todoItem.index !== itemIndex)
     });
-
-    console.log('removeItem')
-
-    // this.state.todoItems.splice(itemIndex, 1);
   }
 
   markTodoDone(itemIndex) {
-    // this.setState({
-    //     todoItems: this.state.todoItems.filter(todoItem => todoItem)
-    // });
     let todoItem = this.state.todoItems[itemIndex];
     let todoItems = this.state.todoItems.slice();
 
     todoItem.done = !todoItem.done;
 
     this.setState({
-        todoItems: todoItems,
+        todoItems,
     });
-
-    console.log(this.state.todoItems[itemIndex].done)
   }
 
   render() {
