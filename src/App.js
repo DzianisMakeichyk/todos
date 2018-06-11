@@ -42,9 +42,9 @@ class App extends Component {
       let todoItem = this.state.todoItems[itemIndex];
       let todoItems = this.state.todoItems.slice();
 
-      todoItem.editing = !todoItem.editing;
+      console.log(itemIndex.newEditToDo)
 
-      console.log(todoItem.newEditToDo)
+      todoItem.editing = !todoItem.editing;
 
       this.setState({
           todoItems,

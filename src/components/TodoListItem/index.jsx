@@ -25,9 +25,7 @@ class TodoListItem extends React.Component {
             let editToDo = this.refs.editToDo;
             let newEditToDo = editToDo.value;
 
-            if(newEditToDo) {
-                this.props.addItem({newEditToDo});
-            }
+            this.props.editItem({newEditToDo});
         }
 
         this.props.editItem(index);
