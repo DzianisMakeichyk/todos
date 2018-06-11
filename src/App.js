@@ -8,12 +8,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-        todoItems: [{index: 0, value: "hello", done: false}]
+        todoItems: [{index: 0, value: "hello", done: false, editing: false}]
     };
 
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.markTodoDone = this.markTodoDone.bind(this);
+    this.editItem = this.editItem.bind(this);
   }
 
   addItem(todoItem) {
@@ -22,7 +23,8 @@ class App extends Component {
     todoItems.push({
         index: this.state.todoItems.length,
         value: todoItem.newItemValue,
-        done: false
+        done: false,
+        editing: false
     });
 
     this.setState({
@@ -34,6 +36,19 @@ class App extends Component {
     this.setState({
       todoItems: this.state.todoItems.filter(todoItem => todoItem.index !== itemIndex)
     });
+  }
+
+  editItem (itemIndex) {
+      let todoItem = this.state.todoItems[itemIndex];
+      let todoItems = this.state.todoItems.slice();
+
+      todoItem.editing = !todoItem.editing;
+
+      console.log(todoItem.newEditToDo)
+
+      this.setState({
+          todoItems,
+      });
   }
 
   markTodoDone(itemIndex) {
@@ -55,6 +70,7 @@ class App extends Component {
         <TodoList items={this.state.todoItems}
                   removeItem={this.removeItem}
                   markTodoDone={this.markTodoDone}
+                  editItem={this.editItem}
         />
 
         <TodoForm  addItem={this.addItem}/>
