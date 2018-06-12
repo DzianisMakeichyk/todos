@@ -20,15 +20,16 @@ class TodoListItem extends React.Component {
 
     onClickEdit() {
         let index = parseInt(this.props.index);
+        let newEditToDo = this.props.item.value;
 
         if(this.props.item.editing) {
             let editToDo = this.refs.editToDo;
-            let newEditToDo = editToDo.value;
+            newEditToDo = editToDo.value;
 
-            this.props.editItem({newEditToDo});
+            this.props.editItem({index, newEditToDo});
+        } else {
+            this.props.editItem({index, newEditToDo});
         }
-
-        this.props.editItem(index);
     }
 
     render () {
@@ -37,7 +38,7 @@ class TodoListItem extends React.Component {
                 <div>
                     <button className="check-me" onClick={this.onClickDone}>check</button>
 
-                    { this.props.item.editing ? <input type="text" ref="editToDo" defaultValue={this.props.item.value}/> : <span>{this.props.item.value}</span> }
+                    { this.props.item.editing ? <input type="text" ref="editToDo" defaultValue={this.props.item.value} /> : <span>{this.props.item.value}</span> }
 
                     <button onClick={this.onClickEdit}>
                         {this.props.item.editing ? 'Save' : 'Edit'}

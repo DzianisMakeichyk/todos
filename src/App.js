@@ -28,7 +28,7 @@ class App extends Component {
     });
 
     this.setState({
-      todoItems,
+      todoItems
     });
   }
 
@@ -39,15 +39,16 @@ class App extends Component {
   }
 
   editItem (itemIndex) {
-      let todoItem = this.state.todoItems[itemIndex];
+      let todoItem = this.state.todoItems[itemIndex.index];
       let todoItems = this.state.todoItems.slice();
 
-      console.log(itemIndex.newEditToDo)
-
       todoItem.editing = !todoItem.editing;
+      todoItem.value = itemIndex.newEditToDo;
+
+      console.log(todoItem)
 
       this.setState({
-          todoItems,
+          todoItems
       });
   }
 
