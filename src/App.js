@@ -45,8 +45,6 @@ class App extends Component {
       todoItem.editing = !todoItem.editing;
       todoItem.value = itemIndex.newEditToDo;
 
-      console.log(todoItem)
-
       this.setState({
           todoItems
       });
