@@ -65,22 +65,30 @@ class App extends Component {
     });
   }
 
-  filterAll(e) {
-    //
+  filterAll() {
+    let todoItems = this.state.todoItems.slice();
+
+    console.log(todoItems)
+
+    this.setState({
+      todoItems
+    });
   };
 
   filterActive() {
     let todoItems = this.state.todoItems.slice();
-    console.log(todoItems)
-
 
     this.setState({
-        todoItems: todoItems.filter(todoItem => todoItem.done !== false)
+        todoItems: todoItems.filter(todoItem => todoItem.done === true)
     });
   };
 
-  filterComplete(e) {
-    //
+  filterComplete() {
+    let todoItems = this.state.todoItems.slice();
+
+    this.setState({
+      todoItems: todoItems.filter(todoItem => todoItem.done === false)
+    });
   }
 
   render() {

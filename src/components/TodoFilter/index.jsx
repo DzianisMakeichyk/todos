@@ -10,6 +10,7 @@ class TodoFilter extends React.Component {
 
     onClickFilterAll(e) {
         e.preventDefault();
+        this.props.filterAll();
     };
 
     onClickFilterActive(e) {
@@ -19,7 +20,7 @@ class TodoFilter extends React.Component {
 
     onClickFilterComplete(e) {
         e.preventDefault();
-        //
+        this.props.filterComplete();
     }
 
     render () {
