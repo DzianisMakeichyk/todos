@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodoHeader from './components/TodoHeader'
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
+import TodoFilter from './components/TodoFilter'
 
 class App extends Component {
   constructor (props) {
@@ -23,7 +24,7 @@ class App extends Component {
     todoItems.push({
         index: this.state.todoItems.length,
         value: todoItem.newItemValue,
-        done: false,
+        done: true,
         editing: false
     });
 
@@ -65,6 +66,7 @@ class App extends Component {
     return (
       <div className="App">
         <TodoHeader />
+        <TodoFilter items={this.state.todoItems} />
 
         <TodoList items={this.state.todoItems}
                   removeItem={this.removeItem}
