@@ -3,6 +3,7 @@ import TodoHeader from './components/TodoHeader'
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 import TodoFilter from './components/TodoFilter'
+import TodoSearch from './components/TodoSearch'
 
 class App extends Component {
   constructor (props) {
@@ -19,6 +20,7 @@ class App extends Component {
     this.filterAll = this.filterAll.bind(this);
     this.filterActive = this.filterActive.bind(this);
     this.filterComplete = this.filterComplete.bind(this);
+    this.filterList = this.filterList.bind(this);
   }
 
   addItem(todoItem) {
@@ -68,8 +70,6 @@ class App extends Component {
   filterAll() {
     let todoItems = this.state.todoItems.slice();
 
-    console.log(todoItems)
-
     this.setState({
       todoItems
     });
@@ -89,6 +89,15 @@ class App extends Component {
     this.setState({
       todoItems: todoItems.filter(todoItem => todoItem.done === false)
     });
+  };
+
+  filterList(searchInput) {
+      let todoItems = this.state.todoItems.slice();
+      todoItems = todoItems.filter(item => item.value.search(searchInput) !== -1);
+
+      this.setState({
+          todoItems
+      });
   }
 
   render() {
@@ -100,6 +109,8 @@ class App extends Component {
                     filterActive={this.filterActive}
                     filterComplete={this.filterComplete}
         />
+
+        <TodoSearch filterList={this.filterList}/>
 
         <TodoList items={this.state.todoItems}
                   removeItem={this.removeItem}
