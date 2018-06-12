@@ -16,6 +16,9 @@ class App extends Component {
     this.removeItem = this.removeItem.bind(this);
     this.markTodoDone = this.markTodoDone.bind(this);
     this.editItem = this.editItem.bind(this);
+    this.filterAll = this.filterAll.bind(this);
+    this.filterActive = this.filterActive.bind(this);
+    this.filterComplete = this.filterComplete.bind(this);
   }
 
   addItem(todoItem) {
@@ -24,7 +27,7 @@ class App extends Component {
     todoItems.push({
         index: this.state.todoItems.length,
         value: todoItem.newItemValue,
-        done: true,
+        done: false,
         editing: false
     });
 
@@ -62,11 +65,33 @@ class App extends Component {
     });
   }
 
+  filterAll(e) {
+    //
+  };
+
+  filterActive() {
+    let todoItems = this.state.todoItems.slice();
+    console.log(todoItems)
+
+
+    this.setState({
+        todoItems: todoItems.filter(todoItem => todoItem.done !== false)
+    });
+  };
+
+  filterComplete(e) {
+    //
+  }
+
   render() {
     return (
       <div className="App">
         <TodoHeader />
-        <TodoFilter items={this.state.todoItems} />
+        <TodoFilter items={this.state.todoItems}
+                    filterAll={this.filterAll}
+                    filterActive={this.filterActive}
+                    filterComplete={this.filterComplete}
+        />
 
         <TodoList items={this.state.todoItems}
                   removeItem={this.removeItem}

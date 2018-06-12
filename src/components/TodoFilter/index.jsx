@@ -3,27 +3,21 @@ import React from 'react';
 class TodoFilter extends React.Component {
     constructor(props) {
         super(props);
-        this.filterAll = this.filterAll.bind(this);
-        this.filterActive = this.filterActive.bind(this);
-        this.filterComplete = this.filterComplete.bind(this);
+        this.onClickFilterAll = this.onClickFilterAll.bind(this);
+        this.onClickFilterActive = this.onClickFilterActive.bind(this);
+        this.onClickFilterComplete = this.onClickFilterComplete.bind(this);
     }
 
-    filterAll(e) {
+    onClickFilterAll(e) {
         e.preventDefault();
     };
 
-    filterActive(e) {
+    onClickFilterActive(e) {
         e.preventDefault();
-        let todoItems = this.props.items.slice();
-
-        this.setState({
-            todoItems: this.props.items.filter(todoItem => todoItem.done !== 'false')
-        });
-
-        console.log(todoItems)
+        this.props.filterActive();
     };
 
-    filterComplete(e) {
+    onClickFilterComplete(e) {
         e.preventDefault();
         //
     }
@@ -31,9 +25,9 @@ class TodoFilter extends React.Component {
     render () {
         return (
             <div>
-                <a href="" onClick={this.filterAll}>All</a>&nbsp;
-                <a href="" onClick={this.filterActive}>Active</a>&nbsp;
-                <a href="" onClick={this.filterComplete}>Complete</a>
+                <a href="" onClick={this.onClickFilterAll}>All</a>&nbsp;
+                <a href="" onClick={this.onClickFilterActive}>Active</a>&nbsp;
+                <a href="" onClick={this.onClickFilterComplete}>Complete</a>
             </div>
         );
     }
