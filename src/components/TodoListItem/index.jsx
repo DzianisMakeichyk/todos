@@ -28,7 +28,7 @@ class TodoListItem extends React.Component {
 
             this.props.editItem({index, newEditToDo});
         } else {
-
+            this.props.editItem({index, newEditToDo});
         }
     }
 

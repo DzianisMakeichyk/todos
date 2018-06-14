@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   addItem(todoItem) {
-    let todoItems = this.state.todoItems.slice();
+      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
 
     todoItems.push({
         index: this.state.todoItems.length,
@@ -45,20 +45,20 @@ class App extends Component {
   }
 
   editItem (itemIndex) {
-      let todoItem = this.state.todoItems[itemIndex.index];
-      let todoItems = this.state.todoItems.slice();
+      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
+      let todoItem = localStorage.length > 0 ? JSON.parse(localStorage.todoItems)[itemIndex.index] : this.state.todoItems[itemIndex.index];
 
       todoItem.editing = !todoItem.editing;
       todoItem.value = itemIndex.newEditToDo;
-
+      console.log(todoItem.editing)
       this.setState({
           todoItems
       });
   }
 
   markTodoDone(itemIndex) {
+      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
     let todoItem = this.state.todoItems[itemIndex];
-    let todoItems = this.state.todoItems.slice();
 
     todoItem.done = !todoItem.done;
 
@@ -68,31 +68,28 @@ class App extends Component {
   }
 
   filterAll() {
-    let todoItems = this.state.todoItems.slice();
-
+      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
     this.setState({
       todoItems
     });
   };
 
   filterActive() {
-    let todoItems = this.state.todoItems.slice();
-
+      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
     this.setState({
         todoItems: todoItems.filter(todoItem => todoItem.done === true)
     });
   };
 
   filterComplete() {
-    let todoItems = this.state.todoItems.slice();
-
+      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
     this.setState({
       todoItems: todoItems.filter(todoItem => todoItem.done === false)
     });
   };
 
   filterList(searchInput) {
-      let todoItems = this.state.todoItems.slice();
+      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
       todoItems = todoItems.filter(item => item.value.search(searchInput) !== -1);
 
       this.setState({
@@ -100,7 +97,23 @@ class App extends Component {
       });
   }
 
+  componentWillMount() {
+      // let todoItems = this.state.todoItems.slice();
+      //
+      // localStorage.setItem('todoItems', JSON.stringify(todoItems)) && this.setState({
+      //     todoItems: JSON.parse(localStorage.setItem('todoItems', JSON.stringify(todoItems))),
+      //     isLoading: false
+      // })
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('todoItems', JSON.stringify(nextState.todoItems))
+  }
+
   render() {
+  let localStorageItems;
+      localStorageItems = localStorage.todoItems;
+      localStorageItems = localStorage.length > 0 ? JSON.parse(localStorageItems) : '';
     return (
       <div className="App">
         <TodoHeader />
@@ -112,7 +125,7 @@ class App extends Component {
 
         <TodoSearch filterList={this.filterList}/>
 
-        <TodoList items={this.state.todoItems}
+        <TodoList items={localStorage.length > 0 ? localStorageItems : this.state.todoItems}
                   removeItem={this.removeItem}
                   markTodoDone={this.markTodoDone}
                   editItem={this.editItem}
