@@ -48,11 +48,19 @@ class App extends Component {
   }
 
   editItem (itemIndex) {
+      // let todoItems = this.state.todoItems.slice();
       let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
+      // let todoItem = this.state.todoItems[itemIndex.index];
       let todoItem = localStorage.length > 0 ? JSON.parse(localStorage.todoItems)[itemIndex.index] : this.state.todoItems[itemIndex.index];
 
-      todoItem.editing = !todoItem.editing;
-      todoItem.value = itemIndex.newEditToDo;
+      console.log(itemIndex)
+
+      localStorage.length > 0 ? todoItems[itemIndex.index].editing = !todoItems[itemIndex.index].editing : todoItem.editing = !todoItem.editing;
+
+      localStorage.length > 0 ? todoItems[itemIndex.index].value = itemIndex.newEditToDo : todoItem.value = itemIndex.newEditToDo;
+
+
+      // console.log(todoItem.editing)
 
       this.setState({
           todoItems
@@ -121,7 +129,6 @@ class App extends Component {
           localStorageItems = localStorage.length > 0 ? JSON.parse(localStorageItems) : '';
       }
 
-      console.log(localStorage)
     return (
       <div className="App">
         <TodoHeader />
