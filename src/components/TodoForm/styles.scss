@@ -1,0 +1,36 @@
+form {
+  width: 100%;
+  padding: 1.5rem 1rem 0 1rem;
+  display: flex;
+
+  input {
+    width: 100%;
+    font-size: 14px;
+    margin: 0 .5em;
+    border-radius: 2em;
+    padding: 0.75em 1.5em;
+    background: none;
+    font-family: "Source Sans Pro", sans-serif;
+    border: #e3e3e3 1px solid;
+    transition: border 250ms ease-out;
+  }
+
+  .button {
+    font-size: 14px;
+    margin: 0 .5em;
+    border-radius: 2em;
+    padding: 0.75em 1.5em;
+    cursor: pointer;
+    background: none;
+    color: #2d7c58;
+    letter-spacing: 1px;
+    font-family: "Source Sans Pro", sans-serif;
+    border: #4fc08d 1px solid;
+    transition: 250ms ease-out;
+
+    &:hover {
+      background: #4fc08d;
+      color: #fff;
+    }
+  }
+}

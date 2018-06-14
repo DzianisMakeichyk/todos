@@ -1,0 +1,54 @@
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em 0;
+  border-radius: 3px;
+  transition: 200ms;
+  color: #4fc08d; }
+  .list-group-item .button--close {
+    margin-left: .5em;
+    background: none;
+    border: 1px solid;
+    color: inherit;
+    padding: 0;
+    line-height: 1;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 80%;
+    cursor: pointer; }
+    .list-group-item .button--close:hover {
+      background: #990000;
+      border: 1px solid #990000; }
+  .list-group-item button {
+    font-size: 12px;
+    margin: 0 .5em;
+    border-radius: 2em;
+    padding: 0.55em 1.1em;
+    cursor: pointer;
+    background: none;
+    color: #2d7c58;
+    letter-spacing: 1px;
+    font-family: "Source Sans Pro", sans-serif;
+    border: #4fc08d 1px solid;
+    -webkit-transition: 250ms ease-out;
+    -o-transition: 250ms ease-out;
+    transition: 250ms ease-out; }
+    .list-group-item button:hover {
+      background: #4fc08d;
+      color: #fff; }
+    .list-group-item button.check-me {
+      fill: #4fc08d;
+      padding: 0.55em 0.7em; }
+      .list-group-item button.check-me:hover svg {
+        fill: #fff; }
+  .list-group-item .issue.is-complete {
+    text-decoration: line-through; }
+
+.listGroup--left, .listGroup--right {
+  display: flex;
+  align-items: center; }

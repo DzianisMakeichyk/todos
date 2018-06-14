@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css'
 
 class TodoFilter extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class TodoFilter extends React.Component {
 
     render () {
         return (
-            <div>
+            <div className="filter__wrapper">
                 <a href="" onClick={this.onClickFilterAll}>All</a>&nbsp;
                 <a href="" onClick={this.onClickFilterActive}>Active</a>&nbsp;
                 <a href="" onClick={this.onClickFilterComplete}>Complete</a>

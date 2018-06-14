@@ -1,0 +1,12 @@
+.filter__wrapper {
+  padding-bottom: 15px;
+  font-size: 16px;
+  letter-spacing: 1px; }
+  .filter__wrapper a {
+    color: #000;
+    transition: .3s ease; }
+    .filter__wrapper a:not(:last-child) {
+      padding-right: 10px; }
+    .filter__wrapper a:hover {
+      color: #2d7c58;
+      text-decoration: underline; }

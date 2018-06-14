@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css'
 
 class TodoSearch extends React.Component {
     constructor(props) {
@@ -16,8 +17,8 @@ class TodoSearch extends React.Component {
 
     render () {
         return (
-            <div>
-                <input type="text" ref="searchInput" placeholder="Search" onChange={this.searchFilterList}/>
+            <div className="searchInput__wrapper">
+                <input className="searchInput" type="text" ref="searchInput" placeholder="Search" onChange={this.searchFilterList}/>
             </div>
         );
     }

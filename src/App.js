@@ -4,13 +4,13 @@ import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 import TodoFilter from './components/TodoFilter'
 import TodoSearch from './components/TodoSearch'
+import './styles.css'
 
 class App extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-        // todoItems: [{index: 0, value: "hello", done: false, editing: false}],
         todoItems: [],
         indexNum: 0
     };
@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   addItem(todoItem) {
-      let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
+    let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
 
     todoItems.push({
         index: this.state.indexNum++,
@@ -61,9 +61,9 @@ class App extends Component {
 
   markTodoDone(itemIndex) {
       let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
-    let todoItem = this.state.todoItems[itemIndex];
+      let todoItem = localStorage.length > 0 ? JSON.parse(localStorage.todoItems)[itemIndex] : this.state.todoItems[itemIndex];
 
-    todoItem.done = !todoItem.done;
+      localStorage.length > 0 ? todoItems[itemIndex].done = !todoItems[itemIndex].done : todoItem.done = !todoItem.done;
 
     this.setState({
         todoItems,
@@ -80,14 +80,14 @@ class App extends Component {
   filterActive() {
       let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
     this.setState({
-        todoItems: todoItems.filter(todoItem => todoItem.done === true)
+        todoItems: todoItems.filter(todoItem => todoItem.done === false)
     });
   };
 
   filterComplete() {
       let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
     this.setState({
-      todoItems: todoItems.filter(todoItem => todoItem.done === false)
+      todoItems: todoItems.filter(todoItem => todoItem.done === true)
     });
   };
 
