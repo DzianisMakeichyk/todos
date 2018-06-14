@@ -9,7 +9,7 @@ class TodoListItem extends React.Component {
     }
 
     onClickClose() {
-        let index = parseInt(this.props.index);
+        let index = this.props.item.index;
         this.props.removeItem(index);
     }
 
@@ -28,7 +28,7 @@ class TodoListItem extends React.Component {
 
             this.props.editItem({index, newEditToDo});
         } else {
-
+            this.props.editItem({index, newEditToDo});
         }
     }
 
