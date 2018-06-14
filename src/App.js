@@ -41,26 +41,18 @@ class App extends Component {
   }
 
   removeItem (itemIndex) {
-      console.log(itemIndex)
     this.setState({
       todoItems: this.state.todoItems.filter(todoItem => todoItem.index !== itemIndex)
     });
   }
 
   editItem (itemIndex) {
-      // let todoItems = this.state.todoItems.slice();
       let todoItems = localStorage.length > 0 ? JSON.parse(localStorage.todoItems) : this.state.todoItems.slice();
-      // let todoItem = this.state.todoItems[itemIndex.index];
       let todoItem = localStorage.length > 0 ? JSON.parse(localStorage.todoItems)[itemIndex.index] : this.state.todoItems[itemIndex.index];
-
-      console.log(itemIndex)
 
       localStorage.length > 0 ? todoItems[itemIndex.index].editing = !todoItems[itemIndex.index].editing : todoItem.editing = !todoItem.editing;
 
       localStorage.length > 0 ? todoItems[itemIndex.index].value = itemIndex.newEditToDo : todoItem.value = itemIndex.newEditToDo;
-
-
-      // console.log(todoItem.editing)
 
       this.setState({
           todoItems
